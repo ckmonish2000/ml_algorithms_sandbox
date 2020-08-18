@@ -3,6 +3,7 @@ from collections import Counter
 
 def euclidean_distance(x1,x2):
     dis=np.sqrt((np.sum(x1-x2)**2))
+    return dis
 
 
 class KNN:
@@ -13,8 +14,8 @@ class KNN:
         self.X=X
         self.y=y
     
-    def predict(self,x):
-        predict_labels=[]
+    def predict(self,X):
+        predict_labels=[self._predict(x) for x in X]
         return np.array(predict_labels)
 
     def _predict(self,x):
