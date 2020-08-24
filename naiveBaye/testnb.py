@@ -7,7 +7,7 @@ def accuracy(pred,label):
     acc=np.sum(pred==label)/len(label)
     return acc
 
-X,y=datasets.make_classification(n_samples=1000,n_features=10,n_classes=2,random_state=123)
+X,y=datasets.make_classification(n_samples=1000,n_features=4,n_classes=2,random_state=123)
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=123)
 
 
