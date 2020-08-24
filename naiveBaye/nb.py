@@ -23,10 +23,11 @@ class NaiveBayes:
 
 
     def predict(self,X):
-        pass
+        predict=[self._predict(x) for x in X]
+        return predict
 
     def _predict(self,x):
-        pass
+        
 
     def _pdf():
         pass
