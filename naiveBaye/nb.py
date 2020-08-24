@@ -27,7 +27,22 @@ class NaiveBayes:
         return predict
 
     def _predict(self,x):
+        posterios=[]
         
+        for idx, c in enumerate(self._classes):
+            prior=np.log(self.prior[idx])
+            class_conditional=np.sum(np.log(self._pdf(idx,x)))
+            posterio=prior+class_conditional
+            posterios.append(posterio)
+        return self._classes[np.argmax(posterios)]
+            
 
-    def _pdf():
-        pass
+
+    def _pdf(self,class_idx,x):
+        mean=self._mean[class_idx]
+        var=self._var[class_idx]
+        numerator=np.exp(-(x-mean)**2/(2*var))
+        denominator=np.sqrt(2*np.pi*var)
+        return numerator/denominator
+        
+        
