@@ -9,10 +9,25 @@ class Preceptron:
         self.bias=None
 
     def fit(self,X,y):
-        pass
+        n_samples,n_features=X.shape
+        self.weight=np.zeros(n_features)
+        self.bias=0
+
+        y_=[1 if i>0 else 0 for i in y]
+        for epoch in range(self.epochs):
+            for idx,x_i in enumerate(X):
+                pred=np.dot(x_i,self.weight)+self.bias
+                pred=self.activation(pred)
+                update=self.lr*(y[idx]-pred)
+                self.weight=update*x_i
+                self.bias+= update
+
+
 
     def predict(self,X):
-        pass
+        linear=np.dot(X,self.weight )+self.bias
+        pred=self.activation(linear)
+        return pred
 
     def unit_step_func(self,x):
         return np.where(x>=0,1,0)
